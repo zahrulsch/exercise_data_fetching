@@ -9,6 +9,7 @@ import (
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 func main() {
@@ -22,14 +23,24 @@ func main() {
 		log.Fatal("Failed to load json resource", err)
 	}
 
-	if tx := db.Create(products); tx.Error != nil {
-		log.Fatal("Seeding process failed", tx.Error)
+	for _, product := range products {
+		err := db.Create(product).Error
+
+		if err != nil {
+			if err == gorm.ErrDuplicatedKey {
+				log.Println("data already exist")
+			}
+		}
+
 	}
+
 }
 
 func databaseSetup() (*gorm.DB, error) {
 	database := sqlite.Open("database.db")
-	db, err := gorm.Open(database, &gorm.Config{})
+	db, err := gorm.Open(database, &gorm.Config{
+		Logger: logger.Discard,
+	})
 
 	if err != nil {
 		return nil, err
