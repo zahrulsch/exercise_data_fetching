@@ -1,7 +1,5 @@
 # Exercise Data Fetching
 
-## Langkah persiapan aplikasi
-
 ### Requirement :
 
 -   Golang ( versi yang saya gunakan v1.20 )
