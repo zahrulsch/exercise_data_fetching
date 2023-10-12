@@ -24,6 +24,11 @@ func (query *GetListProductQuery) queryGuard() *GetListProductQuery {
 	return query
 }
 
+// @Summary api untuk mendapatkan data list product
+// @Tags	product
+// @Success	200	{array}	*database.FetchProductResult
+// @Param	default	query	GetListProductQuery	false	"GetListProductQuery"
+// @Router	/product	[get]
 func (service *Service) GetListProduct(ctx *gin.Context) {
 	query := GetListProductQuery{Page: 1, Size: 10}
 	if err := ctx.BindQuery(&query); err != nil {

@@ -4,8 +4,12 @@ import (
 	"backend/services"
 	"log"
 
+	_ "backend/cmd/server/docs"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
@@ -23,6 +27,7 @@ func main() {
 
 	app.GET("/product", services.GetListProduct)
 	app.GET("/product/:id", services.GetSingleProduct)
+	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	app.Run("127.0.0.1:8080")
 }

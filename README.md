@@ -15,3 +15,9 @@ Jalankan perintah berikut ini : Langkah ini bertujuan untuk mengisi database.db 
 cd backend
 go run ./cmd/seeder
 ```
+
+### Kunjungi `http://localhost:8080/swagger/index.html` untuk melihat dokumentasi API
+
+### Swag init ( Jika diperlukan untuk generate swagger docs ) :
+
+`swag init --parseDependencyLevel 3`
