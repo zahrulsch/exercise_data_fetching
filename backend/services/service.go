@@ -2,6 +2,8 @@ package services
 
 import (
 	"backend/database"
+	"math/rand"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,12 +21,22 @@ func NewService() (*Service, error) {
 	return &Service{db: db}, nil
 }
 
+func (ser *Service) addDelay() {
+	min := 1500
+	max := 2000
+	randomNumber := rand.Intn(max-min+1) + min
+
+	time.Sleep(time.Duration(randomNumber) * time.Millisecond)
+}
+
 func (ser *Service) sendJson(ctx *gin.Context, status int, data interface{}) {
+	ser.addDelay()
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(status, data)
 }
 
 func (ser *Service) sendError(ctx *gin.Context, status int, errorMessage string) {
+	ser.addDelay()
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(status, gin.H{
 		"status_code":   status,
