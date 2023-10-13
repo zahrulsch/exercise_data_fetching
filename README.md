@@ -14,6 +14,13 @@ cd backend
 go run ./cmd/seeder
 ```
 
+### Running server :
+
+```
+cd backend
+go run ./cmd/server
+```
+
 ### Kunjungi `http://localhost:8080/swagger/index.html` untuk melihat dokumentasi API
 
 ### Swag init ( Jika diperlukan untuk generate swagger docs ) :
