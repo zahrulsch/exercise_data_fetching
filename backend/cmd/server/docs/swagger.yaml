@@ -57,9 +57,7 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              $ref: '#/definitions/database.FetchProductResult'
-            type: array
+            $ref: '#/definitions/database.FetchProductResult'
       summary: api untuk mendapatkan data list product
       tags:
       - product
