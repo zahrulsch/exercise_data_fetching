@@ -26,7 +26,7 @@ func (query *GetListProductQuery) queryGuard() *GetListProductQuery {
 
 // @Summary api untuk mendapatkan data list product
 // @Tags	product
-// @Success	200	{array}	*database.FetchProductResult
+// @Success	200	{object}	database.FetchProductResult
 // @Param	default	query	GetListProductQuery	false	"GetListProductQuery"
 // @Router	/product	[get]
 func (service *Service) GetListProduct(ctx *gin.Context) {
