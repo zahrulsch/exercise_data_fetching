@@ -22,11 +22,11 @@ func NewService() (*Service, error) {
 }
 
 func (ser *Service) addDelay() {
-	min := 1500
-	max := 2000
+	min := 19
+	max := 26
 	randomNumber := rand.Intn(max-min+1) + min
 
-	time.Sleep(time.Duration(randomNumber) * time.Millisecond)
+	time.Sleep(time.Duration(randomNumber*100) * time.Millisecond)
 }
 
 func (ser *Service) sendJson(ctx *gin.Context, status int, data interface{}) {
